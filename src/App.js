@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header';
 import Counter from './components/Counter';
+import ImageSlider from './components/ImageSlider';
 
 class Test extends React.Component {
 
@@ -26,6 +27,7 @@ function App() {
         myFunc={(a, b) => a + b} />
         <Counter initialCount = {0} />
         <Counter initialCount = {10} />
+        <ImageSlider />
     </div>
   );
 }
