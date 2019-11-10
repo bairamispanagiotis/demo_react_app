@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header';
+import Counter from './components/Counter';
 
 class Test extends React.Component {
 
@@ -23,6 +24,8 @@ function App() {
       }}
         myArray={[1, 2, 3]}
         myFunc={(a, b) => a + b} />
+        <Counter initialCount = {0} />
+        <Counter initialCount = {10} />
     </div>
   );
 }
