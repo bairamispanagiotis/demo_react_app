@@ -15,21 +15,34 @@ class Test extends React.Component {
   }
 }
 
-function App() {
+class App extends React.Component {
+  state = {
+    visible: true
+  }
   //const add = (a, b) => a + b;
-  return (
-    <div className="App">
-      <Header title="Hello from app" num={7} myObj={{
-        a: 5,
-        b: 6
-      }}
-        myArray={[1, 2, 3]}
-        myFunc={(a, b) => a + b} />
-        <Counter initialCount = {0} />
-        <Counter initialCount = {10} />
-        <ImageSlider />
-    </div>
-  );
+  render() {
+
+    const buttonText = this.state.visible ? "hide" : "show";
+    const slider = this.state.visible ? <ImageSlider /> : null ;
+
+    return (
+      <div className="App">
+        <Header title="Hello from app" num={7} myObj={{
+          a: 5,
+          b: 6
+        }}
+          myArray={[1, 2, 3]}
+          myFunc={(a, b) => a + b} />
+        <Counter initialCount={0} />
+        <Counter initialCount={10} />
+        {slider}
+        <button onClick={() => {
+          this.setState({ visible: !this.state.visible });
+        }}> {buttonText}</button>
+      </div>
+    );
+  }
+
 }
 
 export default App;
