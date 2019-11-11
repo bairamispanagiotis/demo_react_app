@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Counter from './components/Counter';
 import ImageSlider from './components/ImageSlider';
+import MyForm from './components/MyForm';
 
 class Test extends React.Component {
 
@@ -27,7 +28,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Header title="Hello from app" num={7} myObj={{
+        {/* <Header title="Hello from app" num={7} myObj={{
           a: 5,
           b: 6
         }}
@@ -38,7 +39,8 @@ class App extends React.Component {
         {slider}
         <button onClick={() => {
           this.setState({ visible: !this.state.visible });
-        }}> {buttonText}</button>
+        }}> {buttonText}</button> */}
+        <MyForm />
       </div>
     );
   }
