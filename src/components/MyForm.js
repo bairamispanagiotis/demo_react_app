@@ -8,34 +8,28 @@ export default class MyForm extends React.Component {
         title: 'Test'
     }
 
-    handleChange = event => {
-        this.setState({name: event.target.value});
+    handleChange = (event, fieldName, isCheckbox) => {
+
+        this.setState({ [fieldName]: isCheckbox ? event.target.checked : event.target.value });
     };
 
-    handleChangeChecked = event => {
-        this.setState({rememberMe: event.target.checked});
-    };
-
-    handleSelect = event => {
-        this.setState({title: event.target.value});
-    }
-
-    handleSubmit = () =>{
+    handleSubmit = event => {
+        event.preventDefault();
         console.log(this.state);
     }
 
     render() {
-        return <div>
-            <input value={this.state.name} onChange={this.handleChange}  />
-            <input onChange={this.handleChangeChecked} type="checkbox"  checked={this.state.rememberMe} />
+        return <form onSubmit={this.handleSubmit}>
+            <input value={this.state.name} onChange={(event) => this.handleChange(event, 'name')} />
+            <input onChange={this.handleChange} type="checkbox" checked={(event) => this.state.rememberMe(event, 'checkbox', true)} />
             <div>
-            <select value={this.state.title} onChange={this.handleSelect}>
-                <option>Test</option>
-                <option>Test2</option>
-                <option>Test3</option>
+                <select value={(event) => this.state.rememberMe(event, 'select')} onChange={this.handleChange}>
+                    <option>Test</option>
+                    <option>Test2</option>
+                    <option>Test3</option>
                 </select>
             </div>
-          <button onClick={this.handleSubmit}>Submit</button>
-        </div>
+            <button type="submit">Submit</button>
+        </form>
     }
 }
