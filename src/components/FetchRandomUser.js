@@ -4,14 +4,14 @@ export default class FetchRandomUser extends React.Component {
 
     state = {
         loading: true,
-        person: null
+        people: []
     }
 
     async componentDidMount() {
-        const url = 'https://api.randomuser.me/';
+        const url = 'https://api.randomuser.me/?results=5';
         const response = await fetch(url);
         const data = await response.json();
-        this.setState({ person: data.results[0], loading: false });
+        this.setState({ people: data.results, loading: false });
     }
 
     render() {
@@ -21,18 +21,30 @@ export default class FetchRandomUser extends React.Component {
             return <div>loading....</div>;
         }
 
-        if (!this.state.person) {
+        if (!this.state.people.length) {
             return <div>no person....</div>
         }
+
+        const peopleJsx = [];
+
+        this.state.people.forEach(person => {
+            peopleJsx.push(
+                <div key={person.login.uuid}>
+                    <div>{person.name.title}</div>
+                    <div>{person.name.first}</div>
+                    <div>{person.name.last}</div>
+                    <img alt={person.name.first} src={person.picture.large} />
+                </div>
+            );
+        });
 
 
         return <div>
 
             <div>
-                <div>{this.state.person.name.title}</div>
-                <div>{this.state.person.name.first}</div>
-                <div>{this.state.person.name.last}</div>
-                <img alt={this.state.person.name.first} src={this.state.person.picture.large} />
+                
+                {peopleJsx}
+
             </div>
 
         </div>;
