@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Counter from './components/Counter';
 import ImageSlider from './components/ImageSlider';
 import MyForm from './components/MyForm';
+import FetchRandomUser from './components/FetchRandomUser';
 
 class Test extends React.Component {
 
@@ -40,7 +41,8 @@ class App extends React.Component {
         <button onClick={() => {
           this.setState({ visible: !this.state.visible });
         }}> {buttonText}</button> */}
-        <MyForm />
+        {/* <MyForm /> */}
+        <FetchRandomUser />
       </div>
     );
   }
