@@ -24,7 +24,7 @@ class App extends React.Component {
   render() {
 
     const buttonText = this.state.visible ? "hide" : "show";
-    const slider = this.state.visible ? <ImageSlider /> : null ;
+    const slider = this.state.visible ? <ImageSlider /> : null;
 
     return (
       <div className="App">
